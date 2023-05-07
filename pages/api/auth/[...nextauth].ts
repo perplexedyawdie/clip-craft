@@ -1,3 +1,5 @@
+import dbObj from "@/libs/mongo"
+import { MongoDBAdapter } from "@next-auth/mongodb-adapter"
 import NextAuth, { NextAuthOptions } from "next-auth"
 
 
