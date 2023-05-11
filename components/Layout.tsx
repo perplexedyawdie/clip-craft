@@ -1,14 +1,16 @@
 import React from 'react'
 type Props = {
     children: React.ReactNode;
+    Navbar: React.ReactNode;
 }
 
-export default function Layout({ children }: Props) {
+export default function Layout({ children, Navbar }: Props) {
     return (
         <>
             <div className="hero min-h-screen bg-base">
-                <div className="hero-content text-center relative">
-                    <div className=" relative card-body justify-center items-center">
+                {Navbar}
+                <div className="hero-content text-center relative px-0 sm:px-4">
+                    <div className=" justify-center items-center ">
                         <div className="w-full flex justify-center items-center flex-col">
                             {children}
                         </div>

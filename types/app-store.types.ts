@@ -4,3 +4,9 @@ export interface AppData {
     url: string;
     id: number;
 }
+
+export enum Apps {
+    CLIPPER = "Clipper",
+    SCRAPBOOKER = "Scrapbooker",
+    PODCLIP = "Podclip"
+}
