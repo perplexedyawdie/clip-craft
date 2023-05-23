@@ -26,4 +26,10 @@ export interface modelScaleProps {
     samScale: number;
     height: number;
     width: number;
-  }
+}
+
+export interface ClippedImage {
+    imgURL: string;
+    id: string;
+    img: Blob;
+}

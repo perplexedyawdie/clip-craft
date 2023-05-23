@@ -1,12 +1,14 @@
 import ClipperCarousel from '@/components/Clipper/ClipperCarousel'
+import ImageModal from '@/components/Clipper/ImageModal'
 import HelpModal from '@/components/HelpModal'
 import Layout from '@/components/Layout'
 import NavBar from '@/components/NavBar'
-import { Apps, UploadedImage } from '@/types/app-store.types'
+import { Apps, ClippedImage, UploadedImage } from '@/types/app-store.types'
 import dynamic from 'next/dynamic'
 import React from 'react'
 import toast, { Toaster } from 'react-hot-toast'
 import { AiOutlineCloudUpload, AiOutlineScissor, AiOutlineReload } from 'react-icons/ai'
+import { v4 as uuidv4 } from 'uuid';
 const ClipperImage = dynamic(() => import('@/components/ClipperImage'), {
   ssr: false
 })
@@ -14,6 +16,8 @@ const ClipperImage = dynamic(() => import('@/components/ClipperImage'), {
 function Clipper() {
   const [uploadedImg, setUploadedImg] = React.useState<UploadedImage | null>(null);
   const [crop, setCrop] = React.useState<Blob>()
+  const [clippedImgs, setClippedImgs] = React.useState<ClippedImage[]>([])
+  const [selectedImg, setSelectedImg] = React.useState<ClippedImage | null>(null)
 
   function handleImgUpload(event: React.ChangeEvent<HTMLInputElement>): void {
     if (event.target?.files && event.target?.files?.length > 0 && event.target.files[0].type.toLowerCase().includes("image")) {
@@ -39,6 +43,14 @@ function Clipper() {
       .then((img) => {
         console.log("segmentation")
         console.log(URL.createObjectURL(img))
+        setClippedImgs((prev) => [
+          ...prev,
+          {
+            id: uuidv4(),
+            img,
+            imgURL: URL.createObjectURL(img)
+          }
+        ])
       })
   }
 
@@ -85,9 +97,10 @@ function Clipper() {
               <AiOutlineScissor className="stroke-primary text-2xl md:text-3xl" />
             </button>
           </div>}
-          <ClipperCarousel />
+        <ClipperCarousel clippedImgs={clippedImgs} setSelectedImg={setSelectedImg} />
         <div><Toaster /></div>
         <HelpModal screenName={Apps.CLIPPER} />
+        <ImageModal selectedImg={selectedImg} />
       </Layout>
     </>
   )

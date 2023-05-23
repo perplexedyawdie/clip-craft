@@ -11,7 +11,7 @@ const appData: AppData[] = [
         id: 1
     },
     {
-        name: "Scrapbooker",
+        name: "Photo Dump",
         icon: "📸",
         url: "/app-store/scrapbook",
         id: 2
