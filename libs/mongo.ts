@@ -24,6 +24,8 @@ if (process.env.NODE_ENV === 'production') {
     dbProm = clientProm
         .then(client => client.db(process.env.MONGO_DB_NAME))
         .catch(err => {
+            console.log("printing db name")
+            console.log(process.env.MONGO_DB_NAME)
             throw new Error(JSON.stringify(err));
         })
 } else {

@@ -1,3 +1,5 @@
+import { InferenceSession } from "onnxruntime-web";
+
 export interface AppData {
     name: string;
     icon: string;
@@ -10,3 +12,18 @@ export enum Apps {
     SCRAPBOOKER = "Scrapbooker",
     PODCLIP = "Podclip"
 }
+
+export interface InferenceModel {
+    u2netModel: InferenceSession;
+}
+
+export interface UploadedImage {
+    imgURL: HTMLImageElement;
+    imgForm: FormData;
+}
+
+export interface modelScaleProps {
+    samScale: number;
+    height: number;
+    width: number;
+  }
