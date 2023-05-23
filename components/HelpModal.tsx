@@ -13,7 +13,7 @@ function HelpModal({ screenName }: Props) {
             <label htmlFor='help-modal' className="modal modal-bottom sm:modal-middle z-50">
                 <label className="modal-box relative bg-accent">
                     <label htmlFor="help-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                    <div className="carousel w-full">
+                    {/* <div className="carousel w-full">
                         <div id="item1" className="carousel-item w-full flex flex-col">
                             <img src="https://picsum.photos/200/300" className="w-full" />
                             <p>hello world</p>
@@ -33,7 +33,7 @@ function HelpModal({ screenName }: Props) {
                         <a href="#item2" className="btn btn-xs">2</a>
                         <a href="#item3" className="btn btn-xs">3</a>
                         <a href="#item4" className="btn btn-xs">4</a>
-                    </div>
+                    </div> */}
                 </label>
             </label >
         </>

@@ -1,4 +1,3 @@
-import { InferenceSession } from "onnxruntime-web";
 
 export interface AppData {
     name: string;
@@ -11,10 +10,6 @@ export enum Apps {
     CLIPPER = "Clipper",
     SCRAPBOOKER = "Scrapbooker",
     PODCLIP = "Podclip"
-}
-
-export interface InferenceModel {
-    u2netModel: InferenceSession;
 }
 
 export interface UploadedImage {
