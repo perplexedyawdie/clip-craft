@@ -1,0 +1,33 @@
+name: Build and deploy ClipCraft App
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:        
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.5.2
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          
+      - name: Add SSH host key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.KNOWN_HOSTS }}" >> ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts
+          
+      - name: SSH into server and deploy container
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_REGISTRY }}
+        run: |
+          ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} "rm -rf clip-craft && git clone https://github.com/perplexedyawdie/clip-craft && cd clip-craft && \
+            docker build --network host -t clip-craft-next-app:latest . && \
+            docker run -d -p 6002:3000 --name clip-craft-app clip-craft-next-app:latest"
