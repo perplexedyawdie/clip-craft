@@ -6,7 +6,7 @@ WORKDIR /app
 
 RUN apt-get update -y
 
-RUN npm install yarn -g
+# RUN npm install yarn -g
 
 # Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
