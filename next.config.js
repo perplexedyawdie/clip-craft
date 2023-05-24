@@ -11,7 +11,7 @@ const nextConfig = {
   rewrites: async () => [
     {
       source: '/embeddings',
-      destination: 'http://localhost:5000'
+      destination: 'https://api.clipcraft.studio'
     },
   ],
   swcMinify: true,

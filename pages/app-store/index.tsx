@@ -11,16 +11,28 @@ const appData: AppData[] = [
         id: 1
     },
     {
-        name: "Photo Dump",
-        icon: "📸",
-        url: "/app-store/scrapbook",
+        name: "ClipShare",
+        icon: "🚀",
+        url: "/app-store/clip-share",
         id: 2
+    },
+    {
+        name: "PhotoDump",
+        icon: "📸",
+        url: "/app-store/photo-dump",
+        id: 3
     },
     {
         name: "PodClip",
         icon: "🎙",
         url: "/app-store/pod-clip",
-        id: 3
+        id: 4
+    },
+    {
+        name: "PhotoFilter",
+        icon: "✨",
+        url: "",
+        id: 5
     },
 ]
 function AppStore() {
@@ -31,7 +43,7 @@ function AppStore() {
                     <div className="w-full flex justify-center items-center flex-col">
                         <h1 className="text-5xl font-semibold">Apps</h1>
                         <div className="divider"></div>
-                        <div className="grid grid-flow-row xl:grid-cols-3 3xl:grid-cols-4 grid-cols-3 gap-4 w-full place-items-center h-max mt-4">
+                        <div className="grid grid-flow-row xl:grid-cols-3 3xl:grid-cols-4 grid-cols-3 gap-4 w-full place-items-start h-max mt-4">
                             {
                                 appData.map((app) => (<CraftApp
                                     name={app.name}
