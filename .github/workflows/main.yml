@@ -28,6 +28,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_REGISTRY }}
         run: |
-          ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} "git clone https://github.com/perplexedyawdie/clip-craft && cd clip-craft && \
+          ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} "rm -rf clip-craft && git clone https://github.com/perplexedyawdie/clip-craft && cd clip-craft && \
             docker build --network host -t clip-craft-next-app:latest . && \
             docker run -d -p 6002:3000 --name clip-craft-app clip-craft-next-app:latest"
